@@ -180,11 +180,3 @@ button#clear-results {
   color: #28a745; /* Green text color */
   font-family: "Courier", monospace;
 }
-
-/* Footer text */
-.footer-text {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    color: #007bff;
-}
