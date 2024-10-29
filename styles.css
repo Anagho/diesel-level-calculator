@@ -1,173 +1,182 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4; /* Soft background */
-    color: #333; /* Dark text for readability */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full height of the viewport */
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4; /* Soft background */
+  color: #333; /* Dark text for readability */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
 }
 
 .container {
-    background-color: #ffffff; /* White background for the form */
-    padding: 30px; /* Ample padding for better spacing */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    width: 90%;
-    max-width: 400px; /* Responsive max width */
-    max-height: 80vh;
-    overflow-y: auto;
+  background-color: #ffffff; /* White background for the form */
+  padding: 30px; /* Ample padding for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 90%;
+  max-width: 400px; /* Responsive max width */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 h2 {
-    text-align: center; /* Center the header */
-    color: #007BFF; /* Primary blue color */
-    margin-bottom: 20px; /* Spacing below the heading */
+  text-align: center; /* Center the header */
+  color: #007bff; /* Primary blue color */
+  margin-bottom: 20px; /* Spacing below the heading */
 }
 
 label {
-    margin-top: 15px; /* Increased margin for better spacing */
-    font-weight: bold; /* Bold labels */
+  margin-top: 15px; /* Increased margin for better spacing */
+  font-weight: bold; /* Bold labels */
 }
 
 input[type="number"],
 select {
-    width: 100%; /* Full width for inputs */
-    padding: 10px; /* Inner padding */
-    margin: 10px 0; /* Vertical margin for spacing */
-    border: 1px solid #ced4da; /* Light border */
-    border-radius: 5px; /* Rounded borders */
-    box-sizing: border-box; /* Include padding in width */
-    font-size: 1em; /* Consistent font size */
+  width: 100%; /* Full width for inputs */
+  padding: 10px; /* Inner padding */
+  margin: 10px 0; /* Vertical margin for spacing */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 5px; /* Rounded borders */
+  box-sizing: border-box; /* Include padding in width */
+  font-size: 1em; /* Consistent font size */
 }
 
 input[type="number"]:focus,
 select:focus {
-    border-color: #007BFF; /* Highlight border on focus */
+  border-color: #007bff; /* Highlight border on focus */
 }
 
 .buttons {
-    display: flex;
-    justify-content: center; /* Space between buttons */
-    margin-top: 20px; /* Margin above buttons */
-    gap: 2rem;
+  display: flex;
+  justify-content: center; /* Space between buttons */
+  margin-top: 20px; /* Margin above buttons */
+  gap: 2rem;
 }
 
 button {
-    padding: 12px; /* Inner padding */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 1em; /* Font size for buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
-    width: 100%;
+  padding: 12px; /* Inner padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1em; /* Font size for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  width: 100%;
 }
 
 button.proceed {
-    background-color: #007BFF; /* Blue background */
-    color: white; /* White text */
+  background-color: #007bff; /* Blue background */
+  color: white; /* White text */
 }
 
 button.reset {
-    background-color: #dc3545; /* Red background */
-    color: white; /* White text */
+  background-color: #dc3545; /* Red background */
+  color: white; /* White text */
 }
 
 .result {
-    font-weight: bold; /* Bold text for results */
-    margin-top: 20px; /* Spacing above results */
-    text-align: center; /* Center results */
-    font-size: 1.2em; /* Larger font for results */
+  font-weight: bold; /* Bold text for results */
+  margin: 20px; /* Spacing above results */
+  text-align: center; /* Center results */
+  font-size: 1.2em; /* Larger font for results */
 }
 
 button#clear-results {
-    background-color: orange;
+  background-color: orange;
 }
 
 .toast {
-    position: fixed; /* Fixed position for toast */
-    top: 20px; /* Spacing from top */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for centering */
-    background-color: #dc3545; /* Red background */
-    color: white; /* White text */
-    padding: 10px 15px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    display: none; /* Hidden by default */
-    z-index: 1000; /* Ensure toast is above other elements */
-    font-size: 0.9em; /* Font size for toast */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  position: fixed; /* Fixed position for toast */
+  top: 20px; /* Spacing from top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+  background-color: #dc3545; /* Red background */
+  color: white; /* White text */
+  padding: 10px 15px; /* Padding */
+  border-radius: 5px; /* Rounded corners */
+  display: none; /* Hidden by default */
+  z-index: 1000; /* Ensure toast is above other elements */
+  font-size: 0.9em; /* Font size for toast */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
 }
 
 .show {
-    display: block; /* Show the toast */
-} 
-
+  display: block; /* Show the toast */
+}
 
 /* custom scroll bar */
 /* General scrollbar styling for WebKit browsers (Chrome, Safari) */
 .container::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+  width: 8px; /* Width of the scrollbar */
 }
 
 .container::-webkit-scrollbar-track {
-    background: #e0e0e0; /* Light background for the track */
+  background: #e0e0e0; /* Light background for the track */
 }
 
 .container::-webkit-scrollbar-thumb {
-    background-color: #006400; /* Dark green color for the thumb */
-    border-radius: 10px; /* Rounded corners for the thumb */
+  background-color: #006400; /* Dark green color for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
 }
 
 /* Firefox scrollbar styling */
 .container {
-    scrollbar-width: thin; /* Thin scrollbar */
-    scrollbar-color: #006400 #e0e0e0; /* Dark green thumb, light track */
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #006400 #e0e0e0; /* Dark green thumb, light track */
 }
 
 /* Image loader */
 #loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 1;
-    transition: opacity 0.5s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 #loader img {
-    width: 200px; /* Initial size */
-    max-width: 100%;
-    animation: growFadeOut 2.5s ease-in-out forwards; /* Grow and fade out animation */
-    animation-delay: 0.5s; /* Delay before the animation starts */
-    border-radius: 15px;
+  width: 200px; /* Initial size */
+  max-width: 100%;
+  animation: growFadeOut 2.5s ease-in-out forwards; /* Grow and fade out animation */
+  animation-delay: 0.5s; /* Delay before the animation starts */
+  border-radius: 15px;
 }
 
 @keyframes growFadeOut {
-    0% {
-        opacity: 1;
-        transform: scale(1); /* Start at original size */
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2); /* Slightly larger */
-    }
-    100% {
-        opacity: 0;
-        transform: scale(1.5); /* Grown size at end and faded out */
-    }
+  0% {
+    opacity: 1;
+    transform: scale(1); /* Start at original size */
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2); /* Slightly larger */
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5); /* Grown size at end and faded out */
+  }
 }
 
 .hidden {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
-
+/* Volume per cm */
+.volume-container {
+  border: 3px dashed #28a745; /* Initial transparent border */
+  padding: 8px; /* Space around the text */
+  border-radius: 10px; /* Rounded corners */
+  position: relative; /* Position relative for the pseudo-element */
+  overflow: hidden; /* Hide overflow */
+  animation: borderAnimation 4s linear infinite; /* Animation */
+  color: #28a745; /* Green text color */
+  font-family: "Courier", monospace;
+}

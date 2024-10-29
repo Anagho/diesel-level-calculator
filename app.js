@@ -73,7 +73,7 @@ calculateButton.addEventListener("click", function (event) {
 
     tankCapacityLiters = (length * breadth * height) / 1000;
     liquidVolumeLiters = (length * breadth * dipLevel) / 1000;
-    volumePerCm = (length * breadth) / 1000; // Volume per cm for rectangular tank
+    volumePerCm = tankCapacityLiters / 1000; // Volume per cm for rectangular tank
   } else if (tankTypeInput.value === "cylindrical") {
     const length = parseFloat(lengthCylindrical.value);
     const diameter = parseFloat(diameterInput.value);
@@ -93,11 +93,11 @@ calculateButton.addEventListener("click", function (event) {
             (radius - dipLevel) *
               Math.sqrt(2 * radius * dipLevel - Math.pow(dipLevel, 2)))) /
         1000;
-      volumePerCm = (Math.PI * Math.pow(radius, 2)) / 1000; // Volume per cm for cylindrical tank in horizontal orientation
+      volumePerCm = tankCapacityLiters / 1000; // Volume per cm for cylindrical tank in horizontal orientation
     } else {
       tankCapacityLiters = (Math.PI * Math.pow(radius, 2) * length) / 1000;
       liquidVolumeLiters = (Math.PI * Math.pow(radius, 2) * dipLevel) / 1000;
-      volumePerCm = (Math.PI * Math.pow(radius, 2)) / 1000; // Volume per cm for vertical orientation
+      volumePerCm = tankCapacityLiters / 1000; // Volume per cm for vertical orientation
     }
   } else {
     showToast("Please select a tank type.");
@@ -107,13 +107,12 @@ calculateButton.addEventListener("click", function (event) {
   resultDiv.innerHTML = `
     <p>Total Capacity: ${tankCapacityLiters.toFixed(2)} liters</p>
     <p>Diesel Volume: ${liquidVolumeLiters.toFixed(2)} liters</p>
-    <p>Missing Volume: ${(tankCapacityLiters - liquidVolumeLiters).toFixed(
-      2
-    )} liters</p>
-    <p style="font-family: Courier, monospace; margin-top: 10px;">Note: 1cm = ${volumePerCm.toFixed(
-      4
-    )} liters</p>
-  `;
+    <p>Missing Volume: ${(tankCapacityLiters - liquidVolumeLiters).toFixed(2)} liters</p>
+    <div class="volume-container">
+        <p style="margin-block: 10px;">Note: 1cm = ${volumePerCm.toFixed(4)} liters</p>
+    </div>
+`;
+
   resultContainer.style.display = "block";
 });
 
