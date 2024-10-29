@@ -109,7 +109,7 @@ calculateButton.addEventListener("click", function (event) {
     <p>Diesel Volume: ${liquidVolumeLiters.toFixed(2)} liters</p>
     <p>Missing Volume: ${(tankCapacityLiters - liquidVolumeLiters).toFixed(2)} liters</p>
     <div class="volume-container">
-        <p style="margin-block: 10px;">Note: 1cm = ${volumePerCm.toFixed(4)} liters</p>
+        <p style="margin-block: 10px;">Note: 1cm = ${volumePerCm.toFixed(2)} liters</p>
     </div>
 `;
 
