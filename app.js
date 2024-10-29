@@ -18,7 +18,8 @@ const rectangularDimension = document.getElementById("rectangular-dimensions");
 const cylindricalDimension = document.getElementById("cylindrical-dimensions");
 const lengthRectangular = document.getElementById("length"); // Rectangular tank length
 const breadthInput = document.getElementById("breadth"); // Rectangular tank breadth
-const dipLevelRectangular = document.getElementById("dipLevel"); // Liquid height for rectangular tank
+const dipLevelRectangular = document.getElementById("dipLevel-rectangular"); // Liquid height for rectangular tank
+const heightRectangular = document.getElementById("height")
 const lengthCylindrical = document.getElementById("length-cylindrical"); // Cylindrical tank length
 const diameterInput = document.getElementById("diameter"); // Cylindrical tank diameter
 const dipLevelCylindrical = document.getElementById("dipLevel-cylindrical"); // Liquid height for cylindrical tank
@@ -65,14 +66,15 @@ calculateButton.addEventListener("click", function (event) {
   if (tankTypeInput.value === "rectangular") {
     const length = parseFloat(lengthRectangular.value);
     const breadth = parseFloat(breadthInput.value);
+    const height = parseFloat(heightRectangular.value);
     const dipLevel = parseFloat(dipLevelRectangular.value);
 
     if (isNaN(length) || isNaN(breadth) || isNaN(dipLevel)) {
       showToast("Please enter valid values for rectangular tank dimensions.");
       return;
     }
-    tankCapacityLiters = (length * breadth * dipLevel) / 1000;
-    liquidVolumeLiters = tankCapacityLiters;
+    tankCapacityLiters = (length * breadth * height) / 1000;
+    liquidVolumeLiters = (length * breadth * dipLevel) / 1000;;
   } else if (tankTypeInput.value === "cylindrical") {
     const length = parseFloat(lengthCylindrical.value);
     const diameter = parseFloat(diameterInput.value);
