@@ -1,4 +1,3 @@
-
 // animated loader
 window.addEventListener("load", function () {
   setTimeout(() => {
@@ -6,7 +5,6 @@ window.addEventListener("load", function () {
     document.querySelector(".container").style.display = "block";
   }, 2500); // Matches animation duration to complete before hiding
 });
-
 
 // Save all UI elements in variables at the top level
 const form = document.getElementById("diesel-calculator");
@@ -19,14 +17,13 @@ const cylindricalDimension = document.getElementById("cylindrical-dimensions");
 const lengthRectangular = document.getElementById("length"); // Rectangular tank length
 const breadthInput = document.getElementById("breadth"); // Rectangular tank breadth
 const dipLevelRectangular = document.getElementById("dipLevel-rectangular"); // Liquid height for rectangular tank
-const heightRectangular = document.getElementById("height")
+const heightRectangular = document.getElementById("height");
 const lengthCylindrical = document.getElementById("length-cylindrical"); // Cylindrical tank length
 const diameterInput = document.getElementById("diameter"); // Cylindrical tank diameter
 const dipLevelCylindrical = document.getElementById("dipLevel-cylindrical"); // Liquid height for cylindrical tank
 const resultContainer = document.getElementById("result-container");
 const resultDiv = document.getElementById("result");
 const calculateButton = document.getElementById("calculate");
-// const newCalculationButton = document.getElementById("new-calculation");
 const clearResultsButton = document.getElementById("clear-results");
 const resetButton = document.getElementById("reset");
 const toast = document.getElementById("toast");
@@ -62,7 +59,7 @@ calculateButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   // Get input values based on tank type and orientation
-  let tankCapacityLiters, liquidVolumeLiters;
+  let tankCapacityLiters, liquidVolumeLiters, volumePerCm;
   if (tankTypeInput.value === "rectangular") {
     const length = parseFloat(lengthRectangular.value);
     const breadth = parseFloat(breadthInput.value);
@@ -73,8 +70,10 @@ calculateButton.addEventListener("click", function (event) {
       showToast("Please enter valid values for rectangular tank dimensions.");
       return;
     }
+
     tankCapacityLiters = (length * breadth * height) / 1000;
-    liquidVolumeLiters = (length * breadth * dipLevel) / 1000;;
+    liquidVolumeLiters = (length * breadth * dipLevel) / 1000;
+    volumePerCm = (length * breadth) / 1000; // Volume per cm for rectangular tank
   } else if (tankTypeInput.value === "cylindrical") {
     const length = parseFloat(lengthCylindrical.value);
     const diameter = parseFloat(diameterInput.value);
@@ -94,9 +93,11 @@ calculateButton.addEventListener("click", function (event) {
             (radius - dipLevel) *
               Math.sqrt(2 * radius * dipLevel - Math.pow(dipLevel, 2)))) /
         1000;
+      volumePerCm = (Math.PI * Math.pow(radius, 2)) / 1000; // Volume per cm for cylindrical tank in horizontal orientation
     } else {
       tankCapacityLiters = (Math.PI * Math.pow(radius, 2) * length) / 1000;
       liquidVolumeLiters = (Math.PI * Math.pow(radius, 2) * dipLevel) / 1000;
+      volumePerCm = (Math.PI * Math.pow(radius, 2)) / 1000; // Volume per cm for vertical orientation
     }
   } else {
     showToast("Please select a tank type.");
@@ -106,14 +107,16 @@ calculateButton.addEventListener("click", function (event) {
   resultDiv.innerHTML = `
     <p>Total Capacity: ${tankCapacityLiters.toFixed(2)} liters</p>
     <p>Diesel Volume: ${liquidVolumeLiters.toFixed(2)} liters</p>
-     <p>Missing Volume: ${(
-       tankCapacityLiters.toFixed(2) - liquidVolumeLiters.toFixed(2)
-     ).toFixed(2)} litres
+    <p>Missing Volume: ${(tankCapacityLiters - liquidVolumeLiters).toFixed(
+      2
+    )} liters</p>
+    <p style="font-family: Courier, monospace; margin-top: 10px;">Note: 1cm = ${volumePerCm.toFixed(
+      4
+    )} liters</p>
   `;
   resultContainer.style.display = "block";
 });
 
-// newCalculationButton.addEventListener("click", resetForm);
 clearResultsButton.addEventListener("click", clearResults);
 
 function showToast(message) {
@@ -122,7 +125,7 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove("show"), 3000);
 }
 
-// function to reset form
+// Function to reset form
 function resetForm() {
   // reset the input fields
   tankTypeInput.value = "";
@@ -145,5 +148,5 @@ function clearResults() {
   resultDiv.innerHTML = "";
 }
 
-// reset the UI
+// Reset the UI
 resetButton.addEventListener("click", resetForm);
