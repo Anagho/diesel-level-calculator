@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diesel Level Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- tank loader -->
+     <div id="loader">
+        <img src="./images/tank.jpg" alt="Loading...">
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <h2>Diesel Level Calculator</h2>
+       
+        <form id="diesel-calculator">
+            <label for="tankType">Select Tank Type:</label>
+            <select id="tankType" required>
+                <option value="">--Select--</option>
+                <option value="cylindrical">Cylindrical</option>
+                <option value="rectangular">Rectangular</option>
+            </select>
+
+            <div id="orientation-container" style="display: none;">
+                <label for="tankOrientation">Select Tank Orientation:</label>
+                <select id="tankOrientation" required>
+                    <option value="">--Select--</option>
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                </select>
+            </div>
+
+            <div id="dimensions-container" style="display: none;">
+                <div id="rectangular-dimensions" style="display: none;">
+                    <h3>Rectangular Tank Dimensions</h3>
+                    <label for="length">Length (cm):</label>
+                    <input type="number" id="length" placeholder="Length in cm" required>
+
+                    <label for="breadth">Breadth (cm):</label>
+                    <input type="number" id="breadth" placeholder="Breadth in cm" required>
+
+                    <label for="dipLevel">Liquid Height (cm):</label>
+                    <input type="number" id="dipLevel" placeholder="Liquid height in cm" required>
+                </div>
+                <div id="cylindrical-dimensions" style="display: none;">
+                    <h3>Cylindrical Tank Dimensions</h3>
+                    <label for="length-cylindrical">Length (cm):</label>
+                    <input type="number" id="length-cylindrical" placeholder="Length in cm" required>
+
+                    <label for="diameter">Diameter (cm):</label>
+                    <input type="number" id="diameter" placeholder="Diameter in cm" required>
+
+                    <label for="dipLevel-cylindrical">Liquid Height (cm):</label>
+                    <input type="number" id="dipLevel-cylindrical" placeholder="Liquid height in cm" required>
+                </div>
+            </div>
+
+            <div id="result-container" style="display: none;">
+                <h3>Result:</h3>
+                <div class="result" id="result"></div>
+                <!-- <button type="button" class="back" id="new-calculation">Make New Calculation</button> -->
+                <button type="button" class="back" id="clear-results">Clear Results</button>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="reset" id="reset" style="background-color: red; color: white;">Reset</button>
+                <button type="button" class="proceed" id="calculate">Calculate</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
